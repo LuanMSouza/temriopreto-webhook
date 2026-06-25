@@ -20,8 +20,9 @@ export default async function handler(req, res) {
       'Authorization': `Basic ${credentials}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-meta: { featured: "1" }    }),
+body: JSON.stringify({
+  meta: { featured: "1", _featured: "1", rtcl_featured: "1", _rtcl_featured: "1" }
+}),
   });
   const wpResponse = await response.json();
   console.log('WP response:', JSON.stringify(wpResponse));
