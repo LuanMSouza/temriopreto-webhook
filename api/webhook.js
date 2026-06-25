@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   const user = process.env.WP_USER;
   const pass = process.env.WP_APP_PASSWORD;
   const credentials = Buffer.from(`${user}:${pass}`).toString('base64');
-  const response = await fetch(`${wpUrl}/wp-json/wp/v2/posts/${listingId}`, {
+  const response = await fetch(`${wpUrl}/wp-json/wp/v2/rtcl_listing/${listingId}`, {
     method: 'POST',
     headers: {
       'Authorization': `Basic ${credentials}`,
