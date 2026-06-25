@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   const wpResponse = await response.json();
   console.log('WP response:', JSON.stringify(wpResponse));
   if (!response.ok) {
-    return res.status(500).json({ error: 'WP update failed', details: wpResponse));
+return res.status(500).json({ error: 'WP update failed', details: wpResponse });
   }
   return res.status(200).json({ ok: true });
 }
