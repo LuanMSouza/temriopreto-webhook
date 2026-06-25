@@ -21,8 +21,7 @@ export default async function handler(req, res) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      meta: { _rtcl_featured: true }
-    }),
+meta: { featured: "1" }    }),
   });
   const wpResponse = await response.json();
   console.log('WP response:', JSON.stringify(wpResponse));
