@@ -14,20 +14,18 @@ export default async function handler(req, res) {
   const user = process.env.WP_USER;
   const pass = process.env.WP_APP_PASSWORD;
   const credentials = Buffer.from(`${user}:${pass}`).toString('base64');
-  const response = await fetch(`${wpUrl}/wp-json/wp/v2/rtcl_listing/${listingId}`, {
+  const response = await fetch(`${wpUrl}/wp-json/dvls/v1/feature-listing/${listingId}`, {
     method: 'POST',
     headers: {
       'Authorization': `Basic ${credentials}`,
       'Content-Type': 'application/json',
     },
-body: JSON.stringify({
-  meta: { featured: "1", _featured: "1", rtcl_featured: "1", _rtcl_featured: "1" }
-}),
+    body: JSON.stringify({}),
   });
   const wpResponse = await response.json();
   console.log('WP response:', JSON.stringify(wpResponse));
   if (!response.ok) {
-    return res.status(500).json({ error: 'WP update failed', details: wpResponse });
+    return res.status(500).json({ error: 'WP update failed', details: wpResponse));
   }
   return res.status(200).json({ ok: true });
 }
